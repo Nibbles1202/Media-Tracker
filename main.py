@@ -63,6 +63,28 @@ def save_items(items):
     with open("data.json", "w") as file:
         json.dump(items, file, indent=4)
 
+
+def show_insights(items):
+    if not items:
+        print("No data yet.")
+        return
+    
+    completed = [i for i in items if i["status"] == "Completed"]
+    in_progress = [i for i in items if i["status"] == "In Progress"]
+
+    rated_items = [i for i in items if i["rating"] != "N/A"]
+
+    avg_rating = 0
+    if rated_items:
+        avg_rating = sum(float(i["rating"]) for i in rated_items) / len(rated_items)
+
+    print("\n=== INSIGHTS ===")
+    print(f"Total items: {len(items)}")
+    print(f"Completed: {len(completed)}")
+    print(f"In Progress: {len(in_progress)}")
+    print(f"Average Rating: {avg_rating:.2f}\n")
+
+
 def main():
     items = load_items()
     
@@ -71,7 +93,8 @@ def main():
         print("1. Add items")
         print("2. View items")
         print("3. Mark complete")
-        print("4. Exit")
+        print("4. Show insights")
+        print("5. Exit")
 
         choice = input("Choose: ")
 
@@ -82,6 +105,8 @@ def main():
         elif choice == "3":
             mark_complete(items)
         elif choice == "4":
+            show_insights(items)
+        elif choice == "5":
             break
         else:
             print("Invalid choice.\n")
