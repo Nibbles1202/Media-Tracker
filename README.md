@@ -1,25 +1,125 @@
-# Media Tracker CLI
+# 🎬 Media Tracker
 
-A simple command-line application to track games, movies, and TV shows I want to watch or play.
+A full-stack-style Python media tracking application built with Streamlit and modular backend architecture.
 
-## Features
+Track games, movies, and TV shows with persistent storage, interactive UI controls, filtering, search, analytics, and status management.
 
-- Add media items (games, movies, shows)
-- Assign category (game/movie/show)
-- Track status (Not Started, In Progress, Completed)
-- Add optional rating (1–10)
-- View all items in a clean list
-- Persistent storage using JSON (data saves between runs)
+---
 
-## How It Works
+## 🚀 Features
 
-This app stores your media list in a local JSON file (`data.json`), so your data is saved even after closing the program.
+### Core Features
 
-## How to Run
+* Add media items
+* Track status:
 
-Make sure you have Python installed.
+  * Not Started
+  * In Progress
+  * Completed
+* Add ratings
+* Delete items
+* Persistent JSON storage
 
-Run the program:
+### UI Features
+
+* Interactive Streamlit web interface
+* Live status updates
+* Search by title
+* Filter by completion status
+* Dashboard metrics
+* Real-time UI refreshes
+
+### Architecture Features
+
+* Modular Python project structure
+* Separated storage and business logic layers
+* Reusable backend logic
+* Defensive data handling
+
+---
+
+## 🧱 Project Structure
+
+```text
+media-tracker/
+│
+├── app.py          # Streamlit web app
+├── main.py         # CLI version
+├── tracker.py      # Core application logic
+├── storage.py      # Data persistence layer
+├── data.json       # Stored media data
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🛠️ Technologies Used
+
+* Python
+* Streamlit
+* JSON
+* Git & GitHub
+
+---
+
+## ▶️ Running the App
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Launch Streamlit app
+
+```bash
+python -m streamlit run app.py
+```
+
+### Run CLI version
 
 ```bash
 python main.py
+```
+
+---
+
+## 📊 Current Capabilities
+
+* CRUD functionality
+* Interactive web UI
+* Persistent local storage
+* Search and filtering
+* Dashboard metrics
+* Status management
+
+---
+
+## 🔮 Planned Improvements
+
+* AI-powered recommendations
+* Database integration (SQLite/PostgreSQL)
+* FastAPI backend
+* User authentication
+* Cloud deployment
+* Advanced analytics dashboard
+
+---
+
+## 🧠 Engineering Focus
+
+This project was built to strengthen:
+
+* Backend development fundamentals
+* Application architecture
+* State management
+* Data persistence
+* UI integration
+* Full-stack engineering concepts
+
+---
+
+## 📌 Status
+
+Actively being expanded and improved as part of a software engineering learning roadmap.
