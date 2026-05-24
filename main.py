@@ -5,10 +5,15 @@ def add_items(items):
     category = input("Category (game/movie/show): ")
     status = "Not Started"
 
+    rating_input = input("Rating (1-10, optional): ").strip()
+
+    rating = rating_input if rating_input != "" else "N/A"
+
     items.append({
         "title": title,
         "category": category,
-        "status": status 
+        "status": status,
+        "rating": rating if rating else "N/A"
     })
 
     save_items(items)
@@ -21,7 +26,12 @@ def view_items(items):
         return
 
     for i, item in enumerate(items, start=1):
-        print(f"{i}. {item['title']} [{item['category']}] - {item['status']}")
+        print(
+            f"{i}. {item['title']} "
+            f"[{item['category']}] - "
+            f"{item['status']} - "
+            f"Rating: {item.get('rating', 'N/A')}"
+        )
 
         print()
 
@@ -58,7 +68,7 @@ def main():
     
     while True:
         print("=== Media Tracker ===")
-        print("1. Add item")
+        print("1. Add items")
         print("2. View items")
         print("3. Mark complete")
         print("4. Exit")
