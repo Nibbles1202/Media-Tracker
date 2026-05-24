@@ -63,6 +63,46 @@ def save_items(items):
     with open("data.json", "w") as file:
         json.dump(items, file, indent=4)
 
+def delete_item(items):
+    view_items(items)
+
+    if not items:
+        return
+    
+    try:
+        choice = int(input("Enter item number to delete: "))
+
+        if 1 <= choice <= len(items):
+            removed = items.pop(choice - 1)
+            save_items(items)
+            print(f"Deleted: {removed['title']}\n")
+        else:
+            print("Invalid selection.\n")
+
+    except ValueError:
+        print("Please enter a valid number.\n")
+
+def search_items(items):
+    query = input("Search title: ").lower()
+
+    results = [
+        item for item in items
+        if query in item["title"].lower()
+    ]
+
+    if not results:
+        print("No matches found.\n")
+        return
+    
+    print("\n=== SEARCH RESULTS ===")
+    for i, item in enumerate(results, start=1):
+        print(
+            f"{i}. {item['title']} "
+            f"[{item['category']}] - "
+            f"{item['status']} - "
+            f"Rating: {item.get('rating', 'N/A')}"
+        )
+        print()
 
 def show_insights(items):
     if not items:
@@ -94,7 +134,9 @@ def main():
         print("2. View items")
         print("3. Mark complete")
         print("4. Show insights")
-        print("5. Exit")
+        print("5. Delete item")
+        print("6. Search items")
+        print("7. Exit")
 
         choice = input("Choose: ")
 
@@ -107,6 +149,10 @@ def main():
         elif choice == "4":
             show_insights(items)
         elif choice == "5":
+            delete_item(items)
+        elif choice == "6":
+            search_items(items)
+        elif choice == "7":
             break
         else:
             print("Invalid choice.\n")
