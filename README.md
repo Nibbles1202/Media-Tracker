@@ -48,7 +48,6 @@ media-tracker/
 ├── tracker.py      # Core application logic
 ├── storage.py      # Data persistence layer
 ├── data.json       # Stored media data
-├── requirements.txt
 └── README.md
 ```
 
